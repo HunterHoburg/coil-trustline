@@ -69,12 +69,8 @@ vorpal.command('balance', 'Prints out your balance')
     callback();
   });
 
-vorpal.command('exit', 'Closes the trustline')
-  .action((args, callback) => {
-    vorpal.log('Goodbye.');
-    setTimeout(() => {
-      process.exit(1);
-    }, 1500);
-  });
+process.on('exit', () => {
+  vorpal.log('Goodbye.');
+});
 
 vorpal.delimiter(`trustline (port:${options.host}) $ `).show();
